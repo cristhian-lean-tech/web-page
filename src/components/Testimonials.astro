@@ -1,0 +1,72 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+
+const testimonials = [
+  {
+    name: "Carlos Rodríguez",
+    text: "Desde que implementamos el software, redujimos nuestros tiempos de entrega en un 40%.",
+    image: "https://i.pravatar.cc/150?u=1"
+  },
+  {
+    name: "Ana Martínez",
+    text: "La automatización de procesos nos permitió escalar sin aumentar personal administrativo.",
+    image: "https://i.pravatar.cc/150?u=2"
+  },
+  {
+    name: "Miguel Ángel",
+    text: "Claridad total en nuestros inventarios. El retorno de inversión fue inmediato.",
+    image: "https://i.pravatar.cc/150?u=3"
+  },
+  {
+    name: "Laura Gómez",
+    text: "Un equipo profesional que entendió nuestras necesidades desde el primer día.",
+    image: "https://i.pravatar.cc/150?u=4"
+  },
+  {
+    name: "Jorge Ruiz",
+    text: "Resultados medibles y soporte excepcional. Muy recomendados.",
+    image: "https://i.pravatar.cc/150?u=5"
+  }
+];
+---
+
+<section class="py-20 bg-slate-950 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 text-center mb-16">
+    <h2 class="text-3xl md:text-4xl font-semibold text-slate-100 max-w-3xl mx-auto leading-snug">
+      Ordena, automatiza y acelera tu operación con soluciones construidas para entregar resultados medibles desde el primer mes.
+    </h2>
+  </div>
+
+  <div class="relative w-full before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-20 before:bg-gradient-to-r before:from-slate-950 before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-20 after:bg-gradient-to-l after:from-slate-950 after:to-transparent">
+    <div class="flex gap-6 animate-infinite-scroll w-max hover:pause">
+      {/* Original set */}
+      {testimonials.map((t) => (
+        <TestimonialCard {...t} />
+      ))}
+      {/* Duplicated set for seamless loop */}
+      {testimonials.map((t) => (
+        <TestimonialCard {...t} />
+      ))}
+      {testimonials.map((t) => (
+        <TestimonialCard {...t} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-33.333%);
+    }
+  }
+  .animate-infinite-scroll {
+    animation: infinite-scroll 40s linear infinite;
+  }
+  .hover\:pause:hover {
+    animation-play-state: paused;
+  }
+</style>
